@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workbookName": { "type": "string", "defaultValue": "AI Observability Overview" },
+    "location": { "type": "string", "defaultValue": "eastus" },
+    "workspaceResourceId": { "type": "string" }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Insights/workbooks",
+      "apiVersion": "2022-11-01",
+      "name": "[parameters('workbookName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "displayName": "[parameters('workbookName')]",
+        "category": "workbook",
+        "sourceId": "[parameters('workspaceResourceId')]",
+        "serializedData": "{\n  \"version\": \"Notebook/1.0\",\n  \"items\": [\n    {\n      \"type\": 3,\n      \"content\": {\n        \"version\": \"KqlItem/1.0\",\n        \"query\": \"AIObservabilityMetrics_CL | extend status_val = coalesce(status, status_s) | summarize errors = countif(status_val == 'error'), total = count() by bin(TimeGenerated, 5m) | extend errorRate = todouble(errors)/todouble(total)\",\n        \"size\": 1,\n        \"queryType\": 0,\n        \"resourceType\": \"microsoft.operationalinsights/workspaces\"\n      },\n      \"name\": \"Error Rate Trend\"\n    },\n    {\n      \"type\": 3,\n      \"content\": {\n        \"version\": \"KqlItem/1.0\",\n        \"query\": \"AIObservabilityMetrics_CL | extend lat = todouble(coalesce(latency_ms, latency_ms_d)) | summarize avgLatency = avg(lat) by bin(TimeGenerated, 5m)\",\n        \"size\": 1,\n        \"queryType\": 0,\n        \"resourceType\": \"microsoft.operationalinsights/workspaces\"\n      },\n      \"name\": \"Latency Trend\"\n    }\n  ]\n}"
+      }
+    }
+  ]
+}

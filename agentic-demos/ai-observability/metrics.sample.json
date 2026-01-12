@@ -1,0 +1,18 @@
+[
+  {
+    "TimeGenerated": "2026-01-12T10:00:00Z",
+    "status": "success",
+    "model": "gpt-4o-mini",
+    "latency_ms": 820,
+    "prompt_tokens": 120,
+    "completion_tokens": 45
+  },
+  {
+    "TimeGenerated": "2026-01-12T10:05:00Z",
+    "status": "error",
+    "model": "gpt-4o-mini",
+    "latency_ms": 1500,
+    "prompt_tokens": 95,
+    "completion_tokens": 0
+  }
+]

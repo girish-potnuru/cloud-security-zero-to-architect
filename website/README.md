@@ -62,6 +62,14 @@ Note: Markdown files will display as plain text in the browser. To view them wit
   lsof -i :5500 | awk 'NR>1 {print $2}' | xargs -r kill -9
   # Then retry your server command
   ```
+- Exit 127 when starting from `website/`:
+  - This usually means the shell could not find `python3` in that subshell. Start from the repo root, or use a full path to Python.
+  - Example:
+    ```bash
+    cd /Users/girish/azure-security-learning
+    /usr/bin/python3 -m http.server 5500
+    open "http://localhost:5500/website/"
+    ```
 - Change port (example):
   ```bash
   python3 -m http.server 8080
