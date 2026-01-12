@@ -1,0 +1,5 @@
+AzureDiagnostics
+| where Category == "AzureFirewallNetworkRule"
+| where action_s == "Allow"
+| project TimeGenerated, SourceIp_s, DestinationIp_s, DestinationPort_s, Protocol_s, Fqdn_s
+| order by TimeGenerated desc

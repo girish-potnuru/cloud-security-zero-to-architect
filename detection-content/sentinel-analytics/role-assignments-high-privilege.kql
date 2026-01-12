@@ -1,0 +1,6 @@
+AzureActivity
+| where OperationNameValue =~ "MICROSOFT.AUTHORIZATION/ROLEASSIGNMENTS/WRITE"
+| extend RoleDefinitionName = tostring(parse_json(Properties).roleDefinitionName)
+| where RoleDefinitionName in ("Owner", "User Access Administrator", "Contributor")
+| project TimeGenerated, Caller, RoleDefinitionName, SubscriptionId, ResourceGroup, ActivityStatusValue
+| order by TimeGenerated desc

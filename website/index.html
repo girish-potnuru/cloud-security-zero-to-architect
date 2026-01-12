@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Security Learning Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">🛡️</span>
+                <span class="logo-text">Azure Security Hub</span>
+            </div>
+            <nav class="nav">
+                <a href="#dashboard" class="nav-link active" data-section="dashboard">Dashboard</a>
+                <a href="#schedule" class="nav-link" data-section="schedule">Daily Schedule</a>
+                <a href="#labs" class="nav-link" data-section="labs">Labs</a>
+                <a href="#project" class="nav-link" data-section="project">Project</a>
+                <a href="#resources" class="nav-link" data-section="resources">Resources</a>
+                <a href="#guides" class="nav-link" data-section="guides">Guides</a>
+                <a href="#glossary" class="nav-link" data-section="glossary">📖 Glossary</a>
+                <a href="#career" class="nav-link" data-section="career">🚀 Career</a>
+            </nav>
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="dashboard-hero">
+                <h1>Welcome to Your<br><span class="gradient-text">Azure Security Journey</span></h1>
+                <p class="hero-subtitle">8-week core + 8-week advanced (optional) — Cloud Security, AppSec & AI Security Zero to Hero</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-value" id="currentDay">Day 1</div>
+                    <div class="stat-label">Current Day</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-value" id="completedTasks">0</div>
+                    <div class="stat-label">Tasks Completed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-value" id="streak">0</div>
+                    <div class="stat-label">Day Streak</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-value" id="progress">0%</div>
+                    <div class="stat-label">Overall Progress</div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <h2>Your Progress</h2>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="phase-indicators">
+                    <div class="phase" data-phase="1">
+                        <span class="phase-dot"></span>
+                        <span class="phase-label">Foundations</span>
+                    </div>
+                    <div class="phase" data-phase="2">
+                        <span class="phase-dot"></span>
+                        <span class="phase-label">Core Security</span>
+                    </div>
+                    <div class="phase" data-phase="3">
+                        <span class="phase-dot"></span>
+                        <span class="phase-label">SecOps</span>
+                    </div>
+                    <div class="phase" data-phase="4">
+                        <span class="phase-dot"></span>
+                        <span class="phase-label">AI Security</span>
+                    </div>
+                    <div class="phase" data-phase="5">
+                        <span class="phase-dot"></span>
+                        <span class="phase-label">Architecture</span>
+                    </div>
+                    <div class="phase" data-phase="6">
+                        <span class="phase-dot"></span>
+                        <span class="phase-label">AZ-500</span>
+                    </div>
+                    <div class="phase" data-phase="7">
+                        <span class="phase-dot pentesting"></span>
+                        <span class="phase-label">Pentesting</span>
+                    </div>
+                    <div class="phase" data-phase="8">
+                        <span class="phase-dot pentesting"></span>
+                        <span class="phase-label">Expert</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="today-section">
+                <h2>📌 Today's Focus</h2>
+                <div id="todayContent" class="today-content">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="certs-section">
+                <h2>🏆 Certification Goals</h2>
+                <div class="certs-grid">
+                    <div class="cert-card" data-cert="az900">
+                        <input type="checkbox" id="cert-az900" class="cert-checkbox">
+                        <label for="cert-az900">
+                            <span class="cert-badge">AZ-900</span>
+                            <span class="cert-name">Azure Fundamentals</span>
+                            <span class="cert-week">Week 2</span>
+                        </label>
+                    </div>
+                    <div class="cert-card" data-cert="sc900">
+                        <input type="checkbox" id="cert-sc900" class="cert-checkbox">
+                        <label for="cert-sc900">
+                            <span class="cert-badge">SC-900</span>
+                            <span class="cert-name">Security Fundamentals</span>
+                            <span class="cert-week">Week 4</span>
+                        </label>
+                    </div>
+                    <div class="cert-card" data-cert="ai900">
+                        <input type="checkbox" id="cert-ai900" class="cert-checkbox">
+                        <label for="cert-ai900">
+                            <span class="cert-badge">AI-900</span>
+                            <span class="cert-name">AI Fundamentals</span>
+                            <span class="cert-week">Week 6</span>
+                        </label>
+                    </div>
+                    <div class="cert-card featured" data-cert="az500">
+                        <input type="checkbox" id="cert-az500" class="cert-checkbox">
+                        <label for="cert-az500">
+                            <span class="cert-badge">AZ-500</span>
+                            <span class="cert-name">Security Engineer</span>
+                            <span class="cert-week">Week 8 ⭐</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guides Section -->
+        <section id="guides" class="section">
+            <div class="section-header">
+                <h1>📘 Guides</h1>
+                <p>Open the study guides directly from the repo</p>
+            </div>
+
+            <div class="guides-list">
+                <ul class="guide-links">
+                    <li><a href="../01-DAILY-STUDY-SCHEDULE.md" target="_blank">01 - Daily Study Schedule</a></li>
+                    <li><a href="../02-HANDS-ON-LAB-GUIDE.md" target="_blank">02 - Hands-On Lab Guide</a></li>
+                    <li><a href="../03-FINAL-PROJECT-GUIDE.md" target="_blank">03 - Final Project Guide</a></li>
+                    <li><a href="../04-QUICK-REFERENCE-CARD.md" target="_blank">04 - Quick Reference Card</a></li>
+                    <li><a href="../05-RESOURCES-AND-LINKS.md" target="_blank">05 - Resources and Links</a></li>
+                    <li><a href="../06-ARCHITECT-PATH.md" target="_blank">06 - Security Architect Track (Weeks 9–16)</a></li>
+                    <li><a href="../07-ARCHITECT-PORTFOLIO-CHECKLIST.md" target="_blank">07 - Architect Portfolio Checklist</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="schedule" class="section">
+            <div class="section-header">
+                <h1>📅 Daily Study Schedule</h1>
+                <p>112 days of structured learning - 3-4 hours/day</p>
+            </div>
+
+            <div class="week-selector">
+                <button class="week-btn active" data-week="1">Week 1</button>
+                <button class="week-btn" data-week="2">Week 2</button>
+                <button class="week-btn" data-week="3">Week 3</button>
+                <button class="week-btn" data-week="4">Week 4</button>
+                <button class="week-btn" data-week="5">Week 5</button>
+                <button class="week-btn" data-week="6">Week 6</button>
+                <button class="week-btn" data-week="7">Week 7</button>
+                <button class="week-btn" data-week="8">Week 8</button>
+                <button class="week-btn" data-week="9">Week 9</button>
+                <button class="week-btn" data-week="10">Week 10</button>
+                <button class="week-btn" data-week="11">Week 11</button>
+                <button class="week-btn" data-week="12">Week 12</button>
+                <button class="week-btn pentesting" data-week="13">Week 13</button>
+                <button class="week-btn pentesting" data-week="14">Week 14</button>
+                <button class="week-btn pentesting" data-week="15">Week 15</button>
+                <button class="week-btn pentesting" data-week="16">Week 16</button>
+            </div>
+
+            <div id="scheduleContent" class="schedule-content">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Labs Section -->
+        <section id="labs" class="section">
+            <div class="section-header">
+                <h1>🛠️ Hands-On Labs</h1>
+                <p>Practice with real Azure environments</p>
+            </div>
+
+            <div class="labs-grid" id="labsGrid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Project Section -->
+        <section id="project" class="section">
+            <div class="section-header">
+                <h1>🏗️ Capstone Project</h1>
+                <p>Build a secure AI-powered web application</p>
+            </div>
+
+            <div class="project-content" id="projectContent">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="section">
+            <div class="section-header">
+                <h1>📚 Learning Resources</h1>
+                <p>Curated materials for your journey</p>
+            </div>
+
+            <div class="resources-tabs">
+                <button class="resource-tab active" data-tab="courses">Courses</button>
+                <button class="resource-tab" data-tab="videos">Videos</button>
+                <button class="resource-tab" data-tab="docs">Documentation</button>
+                <button class="resource-tab" data-tab="tools">Tools</button>
+                <button class="resource-tab" data-tab="community">Community</button>
+                <button class="resource-tab" data-tab="certifications">Certifications</button>
+            </div>
+
+            <div id="resourcesContent" class="resources-content">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Glossary Section -->
+        <section id="glossary" class="section">
+            <div class="section-header">
+                <h1>📖 Security Glossary</h1>
+                <p>180+ essential terms from Zero to Hero</p>
+            </div>
+
+            <div class="glossary-search">
+                <input type="text" id="glossarySearch" placeholder="🔍 Search terms... (e.g., OAuth, XSS, encryption)">
+            </div>
+
+            <div class="glossary-categories">
+                <button class="glossary-cat active" data-cat="all">All Terms</button>
+                <button class="glossary-cat" data-cat="fundamentals">🔐 Fundamentals</button>
+                <button class="glossary-cat" data-cat="cryptography">🔑 Cryptography</button>
+                <button class="glossary-cat" data-cat="authentication">🪪 Auth</button>
+                <button class="glossary-cat" data-cat="network">🌐 Network</button>
+                <button class="glossary-cat" data-cat="web_security">🕸️ Web Security</button>
+                <button class="glossary-cat" data-cat="threat_modeling">🎯 STRIDE</button>
+                <button class="glossary-cat" data-cat="cloud_security">☁️ Cloud</button>
+                <button class="glossary-cat" data-cat="incident_response">🚨 IR</button>
+                <button class="glossary-cat" data-cat="ai_security">🤖 AI Security</button>
+                <button class="glossary-cat" data-cat="compliance">📋 Compliance</button>
+                <button class="glossary-cat" data-cat="devsecops">🔧 DevSecOps</button>
+            </div>
+
+            <div id="glossaryContent" class="glossary-content">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Career Roadmap Section -->
+        <section id="career" class="section">
+            <div class="section-header">
+                <h1>🚀 Security Architect Career Roadmap</h1>
+                <p>Your 5-year journey from Zero to Security Architect</p>
+            </div>
+
+            <div class="career-stats">
+                <div class="career-stat">
+                    <span class="stat-value">4-6 years</span>
+                    <span class="stat-label">Avg. Time to Architect</span>
+                </div>
+                <div class="career-stat">
+                    <span class="stat-value">5-8</span>
+                    <span class="stat-label">Certifications Needed</span>
+                </div>
+                <div class="career-stat">
+                    <span class="stat-value">3-4x</span>
+                    <span class="stat-label">Salary Growth</span>
+                </div>
+            </div>
+
+            <div id="careerTimeline" class="career-timeline">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <div class="career-note">
+                <h3>💡 Important Note</h3>
+                <p>This 16-week curriculum covers <strong>Year 0-1 (Foundation Phase)</strong>. Real-world experience, additional certifications, and years of practice are essential to reach Security Architect level. This website is your launchpad, not the complete journey.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pomodoro Timer Modal -->
+    <div class="timer-modal" id="timerModal">
+        <div class="timer-container">
+            <button class="timer-close" id="timerClose">×</button>
+            
+            <div class="timer-header">
+                <h2>🍅 Focus Timer</h2>
+                <p class="timer-subtitle">Stay focused, take breaks</p>
+            </div>
+
+            <div class="timer-modes">
+                <button class="timer-mode active" data-mode="focus">Focus</button>
+                <button class="timer-mode" data-mode="short">Short Break</button>
+                <button class="timer-mode" data-mode="long">Long Break</button>
+            </div>
+
+            <div class="timer-display">
+                <svg class="timer-ring" viewBox="0 0 200 200">
+                    <circle class="timer-ring-bg" cx="100" cy="100" r="90"/>
+                    <circle class="timer-ring-progress" cx="100" cy="100" r="90" id="timerProgress"/>
+                </svg>
+                <div class="timer-time" id="timerTime">25:00</div>
+                <div class="timer-label" id="timerLabel">Focus Time</div>
+            </div>
+
+            <div class="timer-controls">
+                <button class="timer-btn secondary" id="timerReset">
+                    <span>↺</span> Reset
+                </button>
+                <button class="timer-btn primary" id="timerStart">
+                    <span>▶</span> Start
+                </button>
+                <button class="timer-btn secondary" id="timerSkip">
+                    Skip <span>⏭</span>
+                </button>
+            </div>
+
+            <div class="timer-stats">
+                <div class="timer-stat">
+                    <span class="stat-number" id="focusSessions">0</span>
+                    <span class="stat-text">Focus Sessions</span>
+                </div>
+                <div class="timer-stat">
+                    <span class="stat-number" id="totalFocusTime">0h 0m</span>
+                    <span class="stat-text">Total Focus Time</span>
+                </div>
+                <div class="timer-stat">
+                    <span class="stat-number" id="currentStreak">0</span>
+                    <span class="stat-text">Today's Sessions</span>
+                </div>
+            </div>
+
+            <div class="timer-settings">
+                <details class="settings-dropdown">
+                    <summary>⚙️ Timer Settings</summary>
+                    <div class="settings-content">
+                        <div class="setting-row">
+                            <label>Focus Duration</label>
+                            <input type="number" id="focusDuration" value="25" min="1" max="60"> min
+                        </div>
+                        <div class="setting-row">
+                            <label>Short Break</label>
+                            <input type="number" id="shortBreakDuration" value="5" min="1" max="30"> min
+                        </div>
+                        <div class="setting-row">
+                            <label>Long Break</label>
+                            <input type="number" id="longBreakDuration" value="15" min="1" max="60"> min
+                        </div>
+                        <div class="setting-row">
+                            <label>Sessions until Long Break</label>
+                            <input type="number" id="sessionsUntilLong" value="4" min="1" max="10">
+                        </div>
+                        <div class="setting-row checkbox-row">
+                            <label>
+                                <input type="checkbox" id="autoStartBreaks" checked> Auto-start breaks
+                            </label>
+                        </div>
+                        <div class="setting-row checkbox-row">
+                            <label>
+                                <input type="checkbox" id="soundEnabled" checked> Sound notifications
+                            </label>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="timer-tips">
+                <p>💡 <strong>Tip:</strong> Complete 4 focus sessions, then take a long break!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timer Toggle Button (Fixed) -->
+    <button class="timer-toggle" id="timerToggle" title="Open Focus Timer">
+        <span class="timer-toggle-icon">🍅</span>
+        <span class="timer-toggle-time" id="timerToggleTime"></span>
+    </button>
+
+    <!-- Quick Reference Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" id="sidebarToggle">
+            <span>📋</span>
+        </button>
+        <div class="sidebar-content">
+            <h3>Quick Reference</h3>
+            <div class="quick-ref" id="quickRef">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </aside>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

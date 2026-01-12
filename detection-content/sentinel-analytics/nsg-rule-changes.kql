@@ -1,0 +1,4 @@
+AzureActivity
+| where OperationNameValue has "MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/SECURITYRULES/WRITE"
+| project TimeGenerated, Caller, ResourceGroup, ResourceId, ActivityStatusValue, CorrelationId
+| order by TimeGenerated desc

@@ -1,0 +1,6 @@
+AzureActivity
+| where ResourceProviderValue =~ "MICROSOFT.STORAGE"
+| where OperationNameValue has_any ("BLOBSERVICES/WRITE", "FILESSERVICES/WRITE", "SETBLOBSERVICEPROPERTIES")
+| extend props = parse_json(Properties)
+| project TimeGenerated, Caller, ResourceGroup, ResourceId, OperationNameValue, ActivityStatusValue, props
+| order by TimeGenerated desc

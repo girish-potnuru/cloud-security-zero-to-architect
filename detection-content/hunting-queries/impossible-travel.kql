@@ -1,0 +1,10 @@
+let window = 1h;
+SigninLogs
+| project TimeGenerated, UserPrincipalName, IPAddress, Location
+| extend Country = tostring(Location.details.countryOrRegion)
+| sort by UserPrincipalName asc, TimeGenerated asc
+| serialize
+| extend prevTime = prev(TimeGenerated), prevCountry = prev(Country), prevUser = prev(UserPrincipalName)
+| where UserPrincipalName == prevUser and prevTime != datetime(null)
+| where TimeGenerated - prevTime <= window and Country != prevCountry
+| project TimeGenerated, UserPrincipalName, prevTime, prevCountry, Country, IPAddress

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/Application-Insights-Workbooks/master/schema/workbook.json",
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 9,
+      "content": {
+        "json": "# Security Overview\nThis workbook summarizes sign-in failures and Key Vault access patterns."
+      },
+      "name": "text-intro"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "SigninLogs | summarize Count = count() by ResultType | order by Count desc",
+        "size": 1,
+        "chartSettings": {
+          "chartType": 1
+        }
+      },
+      "name": "signin-failures"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "AzureDiagnostics | where ResourceType == 'VAULTS' | summarize Count = count() by bin(TimeGenerated, 1h)",
+        "size": 1,
+        "chartSettings": {
+          "chartType": 2
+        }
+      },
+      "name": "keyvault-access"
+    }
+  ]
+}

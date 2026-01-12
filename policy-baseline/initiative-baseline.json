@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-09-01/policyDefinitionSet.json#",
+  "name": "Baseline-Security",
+  "properties": {
+    "displayName": "Baseline: Security Controls (Private, Encrypted, Tagged)",
+    "description": "Template initiative to enforce private endpoints, deny public network, encryption at rest, and required tags.",
+    "metadata": {
+      "category": "Security",
+      "version": "0.1.0"
+    },
+    "policyType": "Custom",
+    "parameters": {
+      "requiredTags": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Required Tags",
+          "description": "Tag names required on all resources"
+        },
+        "defaultValue": ["owner", "env", "costCenter"]
+      }
+    },
+    "policyDefinitions": [
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/<denyPublicNetworkId>",
+        "parameters": {}
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/<enforcePrivateEndpointsId>",
+        "parameters": {}
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/<requireEncryptionAtRestId>",
+        "parameters": {}
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/<requireTagsId>",
+        "parameters": {
+          "tagName": {
+            "value": "[parameters('requiredTags')]"
+          }
+        }
+      }
+    ]
+  }
+}

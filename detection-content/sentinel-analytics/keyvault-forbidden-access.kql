@@ -1,0 +1,6 @@
+AzureDiagnostics
+| where ResourceType == "VAULTS"
+| where OperationName startswith "Secret" or OperationName startswith "Key"
+| where ResultSignature == "Forbidden" or StatusCode == 403
+| project TimeGenerated, OperationName, CallerIPAddress, ResultSignature, StatusCode, Resource
+| order by TimeGenerated desc

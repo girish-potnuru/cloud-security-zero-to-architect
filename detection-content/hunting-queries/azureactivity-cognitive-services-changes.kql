@@ -1,0 +1,5 @@
+AzureActivity
+| where ResourceProviderValue =~ "MICROSOFT.COGNITIVESERVICES"
+| where OperationNameValue has_any ("/WRITE", "DELETE")
+| project TimeGenerated, Caller, OperationNameValue, ResourceGroup, ResourceId, ActivityStatusValue
+| order by TimeGenerated desc

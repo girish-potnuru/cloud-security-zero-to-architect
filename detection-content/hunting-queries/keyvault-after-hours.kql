@@ -1,0 +1,5 @@
+AzureDiagnostics
+| where ResourceType == "VAULTS"
+| extend HourOfDay = datetime_part("Hour", TimeGenerated)
+| where HourOfDay < 6 or HourOfDay >= 22
+| project TimeGenerated, CallerIPAddress, OperationName, ResultDescription

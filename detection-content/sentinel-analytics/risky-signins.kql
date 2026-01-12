@@ -1,0 +1,4 @@
+SigninLogs
+| where RiskLevelDuringSignIn > 0 or RiskState != "none"
+| summarize Count = count() by UserPrincipalName, RiskLevelDuringSignIn, RiskState, bin(TimeGenerated, 1h)
+| order by Count desc
